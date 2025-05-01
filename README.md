@@ -14,3 +14,7 @@ A C-based command-line tool for analyzing NYSE stock data using the Alpha Vantag
 - Closing High
 - Closing Low
 - Volatility
+
+## Project Slideshow for Class
+
+- https://docs.google.com/presentation/d/18jzS8E2zf6wWamUTvCNlaS0kk9qSeGBn0s_MZlKjFLw/edit#slide=id.g3517398ea28_0_237
