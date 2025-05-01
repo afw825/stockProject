@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <curl/curl.h>
+#include <ctype.h>
 #include "stock_analyzer.h"
 
 
@@ -85,7 +86,7 @@ void readCSV(const char* filename, Node** head){
 
 
 // analyze all the data in the list
-void analyze(Node* head, const char *startDateRange, const char *endDateRange){
+void analyze(Node* head, const char *startDateRange, const char *endDateRange, const char *symbol){
     if(head == NULL){
         printf("Error: No data in list\n");
         return;
@@ -152,10 +153,10 @@ void analyze(Node* head, const char *startDateRange, const char *endDateRange){
     float stddev = sqrt(variance / counter);
 
     // Results
-    printf("\n============= Stock %d Day Analysis =============\n", counter);
-    printf("Average Closing Price: $%.2f\n", average);
-    printf("High: $%.2f\n", max);
-    printf("Low: $%.2f\n", min);
+    printf("\n============= %s %d Day Analysis =============\n", symbol ,counter);
+    printf("Moving Average: $%.2f\n", average);
+    printf("Closing High: $%.2f\n", max);
+    printf("Closing Low: $%.2f\n", min);
     printf("Volatility: %.2f\n", stddev);
     printf("Data analyzed from %s to %s\n", startDate, endDate);
 
@@ -328,7 +329,7 @@ void getHistoricPrice(const char *symbol){
     Node *head = NULL;
     readCSV(filename, &head);
 
-    analyze(head, NULL, NULL);
+    analyze(head, NULL, NULL, symbol);
 }
 
 void getDateRangePrice(const char *symbol, const char *startDate, const char *endDate){
@@ -339,7 +340,7 @@ void getDateRangePrice(const char *symbol, const char *startDate, const char *en
     Node *head = NULL;
     readCSV(filename, &head);
 
-    analyze(head, startDate, endDate);
+    analyze(head, startDate, endDate, symbol);
 
 }
 
