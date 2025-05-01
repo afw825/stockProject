@@ -28,7 +28,7 @@ typedef struct Node {
 void append(Node** head, StockData data); // add new node to list
 StockData parseData(char* line); // parse a day's data from CSV
 void readCSV(const char* filename, Node** head); // reads a csv line
-void analyze(Node* head, const char *startDateRange, const char *endDateRange); // analyze data
+void analyze(Node* head, const char *startDateRange, const char *endDateRange, const char *symbol); // analyze data
 void fetchData(const char* symbol, const char* function, const char* filename, int isDateRange); // fetch data from API
 void getCurrentPrice(const char *symbol);
 void getHistoricPrice(const char *symbol);
